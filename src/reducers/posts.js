@@ -1,71 +1,43 @@
+import { GET_POST_LIST } from "../actions/postAction";
+import { GET_POST_DETAIL } from "../actions/postAction";
+import { POST_POST_CREATE } from "../actions/postAction";
+
+
 let initialState = {
-  posts: [
-    {
-      "id": 1,
-      "author": "Syrenne",
-      "content": "Abcdefgghijk"
-    },
-    {
-      "id": 2,
-      "author": "Mynne",
-      "content": "HDKHKDHKSDD"
-    },
-    {
-      "id": 3,
-      "author": "Vanov",
-      "content": "scsczxczx"
-    },
-    {
-      "id": 4,
-      "author": "Syrenne",
-      "content": "Abcdefgghijk"
-    },
-    {
-      "id": 5,
-      "author": "Mynne",
-      "content": "HDKHKDHKSDD"
-    },
-    {
-      "id": 6,
-      "author": "Vanov",
-      "content": "scsczxczx"
-    },
-    {
-      "id": 7,
-      "author": "Syrenne",
-      "content": "Abcdefgghijk"
-    },
-    {
-      "id": 8,
-      "author": "Mynne",
-      "content": "HDKHKDHKSDD"
-    },
-    {
-      "id": 9,
-      "author": "Vanov",
-      "content": "scsczxczx"
-    },
-    {
-      "id": 10,
-      "author": "Syrenne",
-      "content": "Abcdefgghijk"
-    },
-    {
-      "id": 11,
-      "author": "Mynne",
-      "content": "HDKHKDHKSDD"
-    },
-    {
-      "id": 12,
-      "author": "Vanov",
-      "content": "scsczxczx"
-    }
-  ],
-  error: false
+  getPostList: false,
+  errorPostList: false,
+  getPostDetail : false,
+  errorPostDetail: false,
+  getResponDataPost: false,
+  errorResponDataPost: false,
 };
 
 const posts = (state = initialState, action) => {
-   return state
+  switch (action.type) {
+    case GET_POST_LIST:
+      return {
+        ...state,
+        getPostList: action.payload.data,
+        errorPostList: action.payload.errorMessage,
+      };
+
+    case GET_POST_DETAIL:
+      return {
+        ...state,
+        getPostDetail: action.payload.data,
+        errorPostDetail: action.payload.errorMessage,
+      };
+
+    case POST_POST_CREATE:
+      return {
+        ...state,
+        getResponDataPost: action.payload.data,
+        errorResponDataPost: action.payload.errorMessage,
+      };
+
+    default:
+      return state;
+  }
 }
 
 export default posts

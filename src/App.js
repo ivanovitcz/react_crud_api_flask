@@ -18,6 +18,7 @@ export default class App extends Component {
         <NavbarComponent />
         
         <BrowserRouter>
+          <Route path="/reload" component={null} key="reload" />
           <Route path="/" exact><HomeContainer /></Route>
           <Route path="/post/create" exact component={CreatePostContainer}/>
           <Route path="/post/edit/:id" exact component={EditPostContainer}/>
